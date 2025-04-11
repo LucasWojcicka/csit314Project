@@ -1,1 +1,3 @@
-# csit314Project
+#CSIT314 Project
+
+Event Manager
