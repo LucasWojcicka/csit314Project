@@ -12,9 +12,9 @@ def index() -> rx.Component:
     return rx.container(
         rx.color_mode.button(position="top-right"),
         rx.vstack(
-            rx.heading("Heading", size="9"),
-            rx.text("text",size="5"),
-            rx.link(rx.button("button", size="3"), href="http://localhost:3000/form"),
+            rx.heading("Event Management Application", size="9"),
+            rx.text("Welcome",size="5"),
+            rx.link(rx.button("login", size="4"), href="/form"),
             spacing="5",
             justify="center",
             min_height="85vh",
@@ -25,37 +25,45 @@ class FormState(rx.State):
     form_data: dict = {}
 
     @rx.event
-    def handle_submit(self, form_data: dict):
+    def handleSubmit(self, formData: dict):
         """Handle the form submit."""
-        self.form_data = form_data
+        self.form_data = formData
 
 
 def form_example():
-    return rx.vstack(
-        rx.link(rx.button("return", size="3"), href="http://localhost:3000"),
-        rx.form(
-            rx.vstack(
-                rx.input(
-                    placeholder="First Name",
-                    name="first_name",
-                ),
-                rx.input(
-                    placeholder="Last Name",
-                    name="last_name",
-                ),
-                rx.hstack(
-                    rx.checkbox("Checked", name="check"),
-                    rx.switch("Switched", name="switch"),
-                ),
-                rx.button("Submit", type="submit"),
-            ),
-            on_submit=FormState.handle_submit,
-            reset_on_submit=True,
+    return rx.container(
+        rx.color_mode.button(position="top-right"),
+        rx.container(
+            rx.heading("Login Page", size="6", align="center")
         ),
-        rx.divider(),
-        rx.heading("Results"),
-        rx.text(FormState.form_data.to_string()),
-    )
+        rx.container(
+            rx.vstack(
+                rx.form(
+                    rx.vstack(
+                        rx.input(
+                            placeholder="First Name",
+                            name="firstName",
+                        ),
+                        rx.input(
+                            placeholder="Last Name",
+                            name="lastName",
+                        ),
+                        rx.input(
+                            placeholder="Email Address",
+                            name="emailAddress",
+                        ),
+                        rx.hstack(
+                            rx.checkbox("I agree to the Terms and Conditions", name="check"),
+                        ),
+                        rx.button("Submit", type="submit"),
+                        align="center",
+                    ),
+                    on_submit=FormState.handleSubmit,
+                    reset_on_submit=True,
+                ),
+            ),
+        ),
+    )    
 
 app = rx.App()
 app.add_page(index)
