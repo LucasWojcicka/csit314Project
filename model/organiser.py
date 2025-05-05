@@ -4,6 +4,6 @@ from model.user import User
 
 
 class Organiser(rx.Model, table=True):
-    # events: events[]
+    events: Event[]
     user: User
 

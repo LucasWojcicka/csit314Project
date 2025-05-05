@@ -1,12 +1,13 @@
 import reflex as rx
 
 from model.attendee import Attendee
+from model.event_type import EventType
 
 
 class Event(rx.Model, table=True):
     name: str
     duration: int
-    # event_type: event_type
+    event_type: EventType
     date: date
     location: str
     price_range_lowest: int
