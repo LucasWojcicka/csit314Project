@@ -1,6 +1,6 @@
 import reflex as rx
 
-from model.perks import Perks
+from event_management.model.perks import Perks
 from typing import List
 
 

@@ -1,20 +1,21 @@
 import reflex as rx
 
-from model.attendee import Attendee
-from model.event_status import EventStatus
-from model.event_type import EventType
+from event_management.model.attendee import Attendee
+from event_management.model.event_status import EventStatus
+from event_management.model.event_type import EventType
 
 from typing import List
 
-from model.perks import Perks
-from model.registration import Registration
+from event_management.model.perks import Perks
+from event_management.model.registration import Registration
+from datetime import datetime
 
 
 class Event(rx.Model, table=True):
     name: str
     duration: int
     event_type: EventType
-    date: date
+    date: datetime.date
     location: str
     price_range_lowest: int
     price_range_highest: int

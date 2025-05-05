@@ -1,6 +1,6 @@
 import reflex as rx
 from rxconfig import config
-
+from event_management.model.user import User
 class State(rx.State):
     """The app state."""
 
@@ -66,5 +66,9 @@ def form_example():
     )    
 
 app = rx.App()
+
+from event_management.model.seed_data import make_all
+make_all()
+
 app.add_page(index)
 app.add_page(form_example, route="/form")

@@ -1,9 +1,5 @@
 import reflex as rx
 
-from model.user import User
-
-
-
 
 class Perks(rx.Model, table=True):
     name: str
